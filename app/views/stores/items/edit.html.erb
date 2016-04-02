@@ -1,0 +1,5 @@
+<%= form_for [:store_name, @item] do |f| %>
+  <%= f.label :name  %>
+  <%= f.text_field :name %>
+  <%= f.submit "Update Item" %>
+<% end %>
