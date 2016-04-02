@@ -9,7 +9,7 @@ class Stores::ItemsController < ApplicationController
     @item = @store.items.find(params[:id])
     if @item.update_attributes(item_params)
       flash[:notice] = "You have successfully updated #{@item.name}."
-      redirect_to item_path(@store, @item)
+      redirect_to item_path(@store.slug, @item)
     end
   end
 
