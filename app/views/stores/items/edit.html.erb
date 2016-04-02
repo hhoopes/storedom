@@ -1,4 +1,4 @@
-<%= form_for [:store_name, @item] do |f| %>
+<%= form_for @item, url: update_item_path do |f| %>
   <%= f.label :name  %>
   <%= f.text_field :name %>
   <%= f.submit "Update Item" %>

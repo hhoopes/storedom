@@ -1,5 +1,6 @@
 <%= @store.name %>
 
 <% @store.items.each do | item | %>
-<p><%= link_to "Edit #{item.name}", edit_item_path(@store.slug, item) %></p>
+<p><%= item.name %>
+(<%= link_to "Edit", edit_item_path(@store.slug, item) %>)</p>
 <% end %>
