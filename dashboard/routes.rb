@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root 'stores#index'
 
-  get "/dashboard", to: "users#show"
-
   get 'login', to: "sessions#new"
   post 'login', to: "sessions#create"
   delete 'logout', to: "sessions#destroy"
@@ -10,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   namespace :store_admin do
+    get "/dashboard", to: "users#show"
     resources :orders, only: [:index, :show, :update]
     resources :users,  only: [:index, :show]
     resources :items, only: [:new, :create, :edit, :update, :destroy]
