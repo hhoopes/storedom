@@ -14,14 +14,16 @@
         <a href="/">Items</a>
       </li>
       <li>
-        <a href="/users">Users</a>
-      </li>
-      <li>
-        <a href="/orders">Orders</a>
-      </li>
-      <li>
         <a href="/stores">Stores</a>
       </li>
+      <% if admin? %>
+      <li>
+        <a href="/store_admin/users">Users</a>
+      </li>
+      <li>
+        <a href="/store_admin/orders">Orders</a>
+      </li>
+      <% end %>
       <% if current_user %>
         <li><%= link_to "#{current_user.name}'s_dashboard", dashboard_path %></li>
         <li><%= link_to "logout", logout_path, method: :delete%></li>

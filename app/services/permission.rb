@@ -32,14 +32,17 @@ private
   end
 
   def platform_admin_permissions
+    return true if @controller == "users" && @action.in?(%w(show edit update))
     store_admin_permissions
+
   end
 
   def store_admin_permissions
     return true if @controller == "store_admin/users" && @action.in?(%w(show index update))
     return true if @controller == "store_admin/orders" && @action.in?(%w(show index update))
-    return true if @controller == "store_admin/items" && @action.in?(%w(create new edit update destroy))
+    return true if @controller == "stores/items" && @action.in?(%w(create new edit update destroy))
     return true if @controller == "manage_admins" && @action.in?(%w(update destroy))
+    return true if @controller == "users" && @action.in?(%w(show edit update))
 
     registered_user_permissions
   end
@@ -58,6 +61,6 @@ private
     return true if @controller == "users" && @action.in?(%w(new create))
     return true if @controller == "items" && @action.in?(%w(index))
     return true if @controller == "stores" && @action.in?(%w(index show new))
-    return true if @controller == "store/items" && @action.in?(%w(index show))
+    return true if @controller == "stores/items" && @action.in?(%w(index show))
   end
 end

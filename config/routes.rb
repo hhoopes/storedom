@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   scope ":store_name" do
     get '/', to: "stores#show" # /:store_name/items/id/edit
-    resources :items, only: [:show, :index], module: :stores # /:store_name/items/id/edit
+    resources :items, only: [:show, :index, :edit], module: :stores # /:store_name/items/id/edit
     patch '/items/:id', to: "stores/items#update"
   end
 # may use :path to get at same idea as scoping
