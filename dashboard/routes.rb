@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root 'stores#index'
 
-  get "/dashboard", to: "users#show"
-
   get 'login', to: "sessions#new"
   post 'login', to: "sessions#create"
   delete 'logout', to: "sessions#destroy"
@@ -10,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   namespace :store_admin do
+    get "/dashboard", to: "users#show"
     resources :orders, only: [:index, :show, :update]
     resources :users,  only: [:index, :show]
     resources :items, only: [:new, :create, :edit, :update, :destroy]
@@ -22,7 +21,7 @@ Rails.application.routes.draw do
 
   scope ":store_name" do
     get '/', to: "stores#show" # /:store_name/items/id/edit
-    resources :items, only: [:show, :index, :edit], module: :stores # /:store_name/items/id/edit
+    resources :items, only: [:show, :index], module: :stores # /:store_name/items/id/edit
     patch '/items/:id', to: "stores/items#update"
   end
 # may use :path to get at same idea as scoping
