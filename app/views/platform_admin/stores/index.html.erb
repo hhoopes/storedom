@@ -1,0 +1,13 @@
+<h1>View and Update All Stores</h1>
+
+<% @stores.each do | store | %>
+  <p><%= store.name %>
+    <%= form_for([:platform_admin, store]) do |f| %>
+    <%= radio_button_tag(:approved, "true")  %>
+    <%= label_tag(:approved_true, "Approve") %>
+    <%= radio_button_tag(:approved, "false")  %>
+    <%= label_tag(:approved_false, "Deny") %>
+    <%= f.submit  %>
+  <% end %>
+  </p>
+<% end %>

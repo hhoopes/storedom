@@ -4,6 +4,8 @@ class Store < ActiveRecord::Base
 
   before_create :set_slug
 
+  scope :approved, -> { where(approval: true)}
+
   def set_slug
     self.slug = name.parameterize
   end
