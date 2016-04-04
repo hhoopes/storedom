@@ -9,6 +9,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
+  namespace :platform_admin do
+    resources :stores, only: [:index, :update]
+    get "/dashboard", to: "users#show"
+  end
+
   namespace :store_admin do
     resources :orders, only: [:index, :show, :update]
     resources :users,  only: [:index, :show]

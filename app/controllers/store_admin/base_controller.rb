@@ -1,3 +1,3 @@
-class Orders::BaseController < ApplicationController
+class StoreAdmin::BaseController < ApplicationController
 
 end

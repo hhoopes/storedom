@@ -33,6 +33,8 @@ private
 
   def platform_admin_permissions
     return true if @controller == "users" && @action.in?(%w(show edit update))
+    return true if @controller == "platform_admin/stores" && @action.in?(%w(index edit update))
+    return true if @controller == "platform_admin/users" && @action.in?(%w(show))
     store_admin_permissions
 
   end

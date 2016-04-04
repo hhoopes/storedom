@@ -16,6 +16,11 @@
       <li>
         <a href="/stores">Stores</a>
       </li>
+      <li>
+        <% if platform_admin? %>
+          <%= link_to "Platform Admin Dashboard", platform_admin_dashboard_path %>
+        <% end %>
+      </li>
       <% if admin? %>
       <li>
         <a href="/store_admin/users">Users</a>
